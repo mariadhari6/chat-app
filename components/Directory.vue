@@ -1,10 +1,34 @@
 <template>
-  <div class="lg:flex flex-col justify-start h-screen">
+  <div class="lg:flex flex-col justify-start h-screen" @click="closeClear()">
+    <div
+      class="absolute right-5 top-20 bg-gray-150 shadow-3xl z-50"
+      v-if="clear"
+    >
+      <div class="flex flex-col py-4 px-8">
+        <div
+          class="
+            w-6
+            h-6
+            bg-gray-150
+            absolute
+            -translate-y-6
+            right-2
+            transform
+            z-0
+            -rotate-45
+          "
+        ></div>
+        <button class="text-xl hover:text-purple-primary z-20">Clear</button>
+      </div>
+    </div>
     <header
       class="flex flex-row justify-between items-center px-4 py-5 border-b"
     >
       <h3 class="text-xl font-semibold text-black">Directory</h3>
-      <button class="bg-purple-100 px-4.5 py-2.5 rounded-full">
+      <button
+        class="bg-purple-100 px-4.5 py-2.5 rounded-full"
+        @click="clear = !clear"
+      >
         <svg
           width="6"
           height="21"
@@ -354,7 +378,25 @@
 </template>
 
 <script>
-export default {};
+import VueScreenSize from "vue-screen-size";
+
+export default {
+  data() {
+    return {
+      clear: false,
+      width: this.$vssWidth,
+    };
+  },
+  mixins: [VueScreenSize.VueScreenSizeMixin],
+  methods: {
+    closeClear() {
+      this.width = this.$vssWidth;
+      if (this.width < 1024) {
+        this.clear = false;
+      }
+    },
+  },
+};
 </script>
 
 <style>
