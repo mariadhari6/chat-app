@@ -1,0 +1,14 @@
+/* ./assets/css/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-poppins{
+  font-family: 'Poppins', sans-serif;
+}
+.font-asap{
+  font-family: 'Asap', sans-serif;
+}
+.bg-primary{
+  background-color: rgba(#615EF0, 0.06);
+}
